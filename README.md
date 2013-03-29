@@ -1,6 +1,7 @@
 # CompoundJS Example
 
-NodeJS + CompoundJS 를 이용한 웹서비스를 관련 예제를 담고 있습니다.
+NodeJS, CompoundJS, Bootstrap, jQuery 등을 이용한 웹서비스를 관련 예제를 만들어 보고 있습니다.
 
-자세한 내용은 위키 참고 부탁 드립니다.
+* [업로드 구현하기](https://github.com/yuilsang/compoundjs-exam/blob/master/upload.md)
 
+진행중 .. 
