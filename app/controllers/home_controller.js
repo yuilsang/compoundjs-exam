@@ -1,7 +1,7 @@
 load('application');
 
-action('index', function () {
-  render({
-    title: "home#index"
-  });
+action("index", function () {
+    render({
+        title: "home#index"
+    });
 });
