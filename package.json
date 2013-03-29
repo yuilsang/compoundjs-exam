@@ -12,6 +12,7 @@
   , "stylus": "latest"
   , "seedjs": "latest"
   , "co-assets-compiler": "*"
+  , "connect-form2": "latest"
   },
   "devDependencies":
   { "nodeunit": "*"
