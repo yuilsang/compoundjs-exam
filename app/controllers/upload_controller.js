@@ -20,11 +20,13 @@ action("api_upload", function() {
         console.log("moved");
     });
 
-    if(type === "json") {
-        send({
-            code:0
-        });
-    } else {
+
+    if(req.params.format == "html") {
+        flash('info', 'upload ok');
         redirect("/upload");
+    } else {
+        send({
+            code: 0
+        });
     }
 });
