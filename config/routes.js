@@ -4,7 +4,7 @@ exports.routes = function (map) {
     map.get("/", "home#index");
 
     // UPLOAD
-    map.get("/upload", "upload#index");
-    map.post("/api/upload", "upload#api_upload");
+    map.get("/upload", "upload#index"); // http://localhost:3000/upload
+    map.post("/api/upload", "upload#api_upload"); // http://localhost:3000/api/upload
 
 };
