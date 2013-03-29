@@ -1,7 +1,7 @@
 # HTML5 업로드 기능 구현
-파일을 업로드 할 수 있는 Web Server 를 구현하고 Client 에서 jQuery 용 HTML5 Uploader Plugin을 이용하여 업로드하고 목록을 표시하는 기능의 간단한 서비스를 구현해 보도록 하겠습니다. 
+Server-Side 에서는 파일을 업로드 할 수 있는 Web Service 를 구현하고 Client-Side 에서 jQuery 용 HTML5 Uploader Plugin을 이용하여 업로드하고 목록을 표시하는 기능의 간단한 서비스를 구현해 보도록 하겠습니다. 
 
-## Server
+## Server-Side
 
 #### connect-form package install
 connect-form 설치
@@ -76,8 +76,6 @@ client 에서 Ajax 로 접근 할 API를 생성 합니다.
 
 
 
-
-
-## Client
+## Client-Side
 
 #### 업로드는 
