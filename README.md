@@ -1,11 +1,9 @@
 # CompoundJS Example
 
 ## Overview
-Node.js Platform, compoundJS Framework, Bootstrap UI Framework 등을 이용하여 간단하게 시나리오별로 웹 서비스를 만들어 보고 필요한 내용을 정리를 해보고자 합니다.
-문제가 있는 부분들은 공유 부탁 드립니다.
+Node.js Platform, compoundJS, Bootstrap 등을 이용하여 간단하게 시나리오별로 웹 서비스를 만들어 보고 필요한 내용을 정리를 해보고자 합니다. 문제가 있는 부분들은 공유 부탁 드립니다 ^^
 
-## http://localhost:3000/ 호출
-##### 작업
+## Home 페이지 구현
 	# controller, action scaffolding 
 	$ compound g controller home index
 	
@@ -14,7 +12,6 @@ Node.js Platform, compoundJS Framework, Bootstrap UI Framework 등을 이용하�
 	
 	
 ## HTML5 업로드 기능 구현 
-##### 작업
 	# 업로드 페이지 생성
 	$ compound g controller upload index
 	
