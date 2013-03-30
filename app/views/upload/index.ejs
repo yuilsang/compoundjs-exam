@@ -1,8 +1,7 @@
 <div class="page-header"><h1>upload#index</h1></div>
 
 <h3>File List</h3>
-<ul>
-	<li></li>
+<ul id="filelist">
 </ul>
 
 <hr>
@@ -19,3 +18,19 @@
 <hr>
 
 <h3>HTML5 Uploader</h3>
+
+<script type="text/javascript">
+	$.ajax({
+		type: "GET",
+		url: "/upload/filelist.json",
+		data: {}
+	}).done(function( msg ) {
+		console.log(msg);
+		var filelist = msg.filelist;
+		for(var i=0;i<filelist.length;i++) {
+			$("#filelist").append("<li>"+filelist[i]+"</li>");
+		}
+	});
+
+// authenticity_token: $('meta[name=csrf-token]').attr('content')
+</script>

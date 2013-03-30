@@ -6,10 +6,10 @@ action("index", function () {
     });
 });
 
-action("api_uploadedfilelist", function() {
+action("filelist", function() {
     var fs = require("fs");
     var async = require("async");
-
+    var format = req.params.format || "html";
 
     async.series([function(next) {
        // read file
@@ -24,9 +24,11 @@ action("api_uploadedfilelist", function() {
     }], function(err, datas) {
         // fail
         if(err) {
-            if(req.params.format == "html") {
-                flash('error', 'upload fail');
-                redirect("/upload");
+            if(format == "html") {
+                render({
+                    title: "upload#filelist",
+                    filelist: []
+                });
             } else {
                 send({
                     code: 1
@@ -36,21 +38,24 @@ action("api_uploadedfilelist", function() {
         }
 
         // success
-        if(req.params.format == "html") {
-            flash('info', 'upload ok');
-            redirect("/upload");
+        if(format == "html") {
+            render({
+                title: "upload#filelist",
+                filelist: datas[0]
+            });
         } else {
             send({
                 code: 0,
-                files: datas[0]
+                filelist: datas[0]
             });
         }
     });
 });
 
-action("api_upload", function() {
+action("filesave", function() {
     var fs = require("fs");
     var async = require("async");
+    var format = req.params.format || "html";
     var type = req.body.type;
 
     var file_tmp = req.files.file.path;
@@ -62,15 +67,13 @@ action("api_upload", function() {
         // file upload
         fs.rename( file_tmp, file_savepath, function(err){
             if(err) next(err);
-
             next(null);
-
             return;
         });
     }], function(err, datas) {
         // fail
         if(err) {
-            if(req.params.format == "html") {
+            if(format == "html") {
                 flash('error', 'upload fail');
                 redirect("/upload");
             } else {
@@ -82,7 +85,7 @@ action("api_upload", function() {
         }
 
         // success
-        if(req.params.format == "html") {
+        if(format == "html") {
             flash('info', 'upload ok');
             redirect("/upload");
         } else {
@@ -91,5 +94,4 @@ action("api_upload", function() {
             });
         }
     });
-
 });
