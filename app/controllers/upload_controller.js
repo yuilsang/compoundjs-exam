@@ -6,35 +6,6 @@ action("index", function () {
     });
 });
 
-action("api_uploadedfilelist", function() {
-    var fs = require("fs");
-    var async = require("async");
-
-
-    async.series([function(next) {
-       // read file
-       fs.readdir("files/", function(err, files) {
-           if(err) {
-               next(err);
-               return;
-           }
-
-           next(null, files);
-       });
-    }], function(err, datas) {
-
-        if(req.params.format == "html") {
-            flash('info', 'upload ok');
-            redirect("/upload");
-        } else {
-            send({
-                code: 0,
-                files: datas[0]
-            });
-        }
-    });
-});
-
 action("api_upload", function() {
     var fs = require("fs");
     var async = require("async");
