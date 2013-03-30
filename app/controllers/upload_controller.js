@@ -22,20 +22,7 @@ action("api_uploadedfilelist", function() {
            next(null, files);
        });
     }], function(err, datas) {
-        // fail
-        if(err) {
-            if(req.params.format == "html") {
-                flash('error', 'upload fail');
-                redirect("/upload");
-            } else {
-                send({
-                    code: 1
-                });
-            }
-            return;
-        }
 
-        // success
         if(req.params.format == "html") {
             flash('info', 'upload ok');
             redirect("/upload");
