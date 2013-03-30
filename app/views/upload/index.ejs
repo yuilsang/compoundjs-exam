@@ -8,7 +8,7 @@
 
 <h3>File Upload</h3>
 
-<% var form = formFor("upload_test", { action: "/api/upload.html", method: "post", enctype: "multipart/form-data" }); %>
+<% var form = formFor("upload_test", { action: "/upload/filesave", method: "post", enctype: "multipart/form-data" }); %>
 <%- form.begin() %>
 <input name="file" id="file" type="file" value="" style="width:60px;height:25px" />
 <br><br>
