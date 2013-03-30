@@ -4,7 +4,6 @@ lib-cov
 *.csv
 *.out
 *.pid
-files/*
 config/database.js
 pids
 logs
