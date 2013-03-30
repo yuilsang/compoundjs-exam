@@ -15,6 +15,7 @@ npm-debug.log
 .idea/*
 .DS_Store
 log/*.log
+compoundjs-exam.iml
 .c9revisions
 coverage.html
 .settings
