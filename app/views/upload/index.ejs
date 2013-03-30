@@ -6,7 +6,9 @@
 
 <hr>
 
-<h3>File Upload</h3>
+<h3>Upload</h3>
+
+<h5>File Upload</h5>
 
 <% var form = formFor("upload_test", { action: "/upload/filesave", method: "post", enctype: "multipart/form-data" }); %>
 <%- form.begin() %>
@@ -17,9 +19,11 @@
 
 <hr>
 
-<h3>HTML5 Uploader</h3>
+<h5>HTML5 Uploader</h5>
 
 <script type="text/javascript">
+
+var filelist = function() {
 	$.ajax({
 		type: "GET",
 		url: "/upload/filelist.json",
@@ -31,6 +35,9 @@
 			$("#filelist").append("<li>"+filelist[i]+"</li>");
 		}
 	});
+}
+
+filelist();
 
 // authenticity_token: $('meta[name=csrf-token]').attr('content')
 </script>

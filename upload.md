@@ -1,13 +1,9 @@
 # HTML5 업로드 기능 구현
-Server-Side 에서는 파일을 업로드 할 수 있는 Web Service 를 구현하고 Client-Side 에서 jQuery 용 HTML5 Uploader Plugin을 이용하여 업로드하고 목록을 표시하는 기능의 간단한 서비스를 구현해 보도록 하겠습니다. 
+Server-Side 에서는 파일을 업로드 할 수 있는 Web Service 를 구현하고 Client-Side 에서 jQuery HTML5 Uploader Plugin을 이용하여 업로드하고, 목록을 표시하는 기능의 간단한 서비스를 구현해 보도록 하겠습니다. 
 
 ## Server-Side
 
 #### connect-form package install
-connect-form 설치
-	
-	$ npm install connect-form2
-	
 /package.json 파일에 추가
 	
 	$  
@@ -16,6 +12,10 @@ connect-form 설치
 	  , "connect-form2": "latest"
 	},
 
+connect-form 설치
+	
+	$ npm install connect-form2
+	
 
 #### 환경설정 수정
 /config/environments/development.js 파일 수정
@@ -57,7 +57,7 @@ client 에서 Ajax 로 접근 할 API를 생성 합니다.
 	map.post("/api/upload", "upload#api_upload");
 
 #### 업로드 폴더 생성
-/files 폴더를 생성
+- app root 에 files 폴더를 생성
 
 #### upload Controller index action 작성
 /app/controllers/upload_controller.js
@@ -78,4 +78,11 @@ client 에서 Ajax 로 접근 할 API를 생성 합니다.
 
 ## Client-Side
 
-#### 업로드는 
+#### jQuery HTML5 Upload Plugin을 다운로드
+
+- http://tutorialzine.com/2011/09/html5-file-upload-jquery-php/
+
+#### HTML
+
+
+
