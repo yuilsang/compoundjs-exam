@@ -13,6 +13,7 @@
   , "seedjs": "latest"
   , "co-assets-compiler": "*"
   , "connect-form2": "latest"
+  , "async": "latest"
   },
   "devDependencies":
   { "nodeunit": "*"

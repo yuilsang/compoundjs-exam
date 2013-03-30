@@ -18,6 +18,7 @@ action("api_upload", function() {
     fs.rename( file_tmp, file_savepath, function(err){
         if(err) console.log(err);
         console.log("moved");
+        return;
     });
 
 
