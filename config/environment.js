@@ -5,8 +5,8 @@ module.exports = function (compound) {
 
     app.configure(function(){
         app.use(express.static(app.root + '/public', { maxAge: 86400000 }));
-        app.set('jsDirectory', '/javascripts/');
-        app.set('cssDirectory', '/stylesheets/');
+        app.set('jsDirectory', '/js/');
+        app.set('cssDirectory', '/css/');
         app.set('cssEngine', 'stylus');
         app.use(express.bodyParser());
         app.use(express.cookieParser('secret'));
