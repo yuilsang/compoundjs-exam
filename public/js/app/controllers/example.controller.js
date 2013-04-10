@@ -30,22 +30,34 @@ define(
             },
             onclick: function() {
                 this.respondSelector("._request", function() {
-                    Request.$("ExampleController").method("GET").url("/example/api/request").data({authenticity_token: $('meta[name=csrf-token]').attr('content') }).send(function() {
+                    Request.$("ExampleController")
+                        .method("GET")
+                        .url("/example/api/request")
+                        .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
+                        .send(function() {
+
                         Request.done(function(r) {
                             console.log(r);
                         });
+
                     });
                 }.bind(this));
 
                 this.respondSelector("._request_sync", function() {
                     Flow.sync([function(next) {
-                        Request.$("ExampleController").method("GET").url("/example/api/request").data({authenticity_token: $('meta[name=csrf-token]').attr('content') }).send(function() {
+                        Request.$("ExampleController")
+                            .method("GET")
+                            .url("/example/api/request")
+                            .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
+                            .send(function() {
                             Request.done(function(r) {
                                 next(null, r);
                             });
                         });
                     }, function(next) {
-                        Request.$("ExampleController").data({ data1: "23121321" }).send(function() {
+                        Request.$("ExampleController")
+                            .data({ data1: "23121321" })
+                            .send(function() {
                             Request.done(function(r) {
                                 next(null, r);
                             });
