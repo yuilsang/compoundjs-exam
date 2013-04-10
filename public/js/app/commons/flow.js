@@ -4,7 +4,7 @@
  */
 define(
 
-    "app/common/flow",
+    "app/commons/flow",
 
     function() {
 

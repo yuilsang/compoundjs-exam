@@ -4,7 +4,7 @@
  */
 define(
 
-    "app/common/view",
+    "app/commons/view",
 
     function() {
 

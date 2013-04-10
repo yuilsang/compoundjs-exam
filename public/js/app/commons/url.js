@@ -4,7 +4,7 @@
  */
 define(
 
-    "app/common/url",
+    "app/commons/url",
 
     function() {
 

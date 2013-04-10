@@ -4,10 +4,10 @@
  */
 define(
 
-    "app/common/controller",
+    "app/commons/controller",
 
     [
-        "app/common/view"
+        "app/commons/view"
     ],
 
     function(View) {
