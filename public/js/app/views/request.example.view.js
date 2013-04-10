@@ -17,10 +17,7 @@ define(
         /** @class */
         var RequestExampleView = View.singleton(/** @lends RequestExampleView.prototype */{
             $init: function() {
-                console.log("ExampleView");
-
                 this.$("._example");
-//                this.$().on("click", "._request", this.onclick.bind(this));
             }
         });
 
