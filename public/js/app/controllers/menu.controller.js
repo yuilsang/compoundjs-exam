@@ -30,9 +30,7 @@ define(
                     switch(name) {
                         case "home":
                             break;
-                        case "about":
-                            break;
-                        case "sample":
+                        case "example":
                             break;
                     }
                 });

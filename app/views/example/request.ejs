@@ -1,0 +1,43 @@
+<%-include ../layouts/header%>
+<style>
+h1.title {
+	font-size:50px;
+}
+
+.alert-message .block-message .info {
+	background-color: #ddf4fb;
+	border-color: #c6edf9;
+}
+
+.alert-message {
+	color: #404040;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+</style>
+<div class="_example container-narrow">
+	<div class="masthead">
+	<%-include ../layouts/menu%>
+
+	<h3 class="muted">JSKit</h3>
+	</div>
+	<hr>
+
+	<section>
+
+	<h3>Request</h3>
+
+	<div class="bs-docs-example" style="padding-bottom: 24px;">
+	<a data-toggle="modal" href="#myModal" class="_request btn btn-primary">요청</a>
+	</div>
+
+	<pre class="prettyprint">
+	요청 버튼을 클릭하면 결과값이 콘솔창에 출력 됩니다.
+	</pre>
+
+	</section>
+
+	<div class="footer">
+	<p>&copy; yuilsang 2013</p>
+	</div>
+</div>
+<%-include ../layouts/footer%>

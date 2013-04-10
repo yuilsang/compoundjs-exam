@@ -6,6 +6,13 @@ exports.routes = function (map) {
     map.get("/", "home#index");
 
     // ================================
+    // EXAMPLE
+    // ================================
+    map.get("/example", "example#index");
+    map.get("/example/request", "example#request");
+    map.get("/example/api/request", "example#api_request");
+
+    // ================================
     // UPLOAD
     // ================================
 

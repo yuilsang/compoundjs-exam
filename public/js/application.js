@@ -11,15 +11,18 @@ require.config({
         [
             "app/commons/url",
             "app/controllers/menu.controller",
-            "app/controllers/test.controller"
+            "app/controllers/test.controller",
+            "app/controllers/example.controller"
         ],
         function(
             URL,
             MenuController,
-            TestController
+            TestController,
+            ExampleController
             ) {
                 new MenuController();
                 new TestController();
+                new ExampleController();
         }
     );
 }).call(this);
