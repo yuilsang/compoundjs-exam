@@ -20,14 +20,7 @@ define(
                 console.log("ExampleView");
 
                 this.$("._example");
-                this.$().on("click", "._request", this.onclick.bind(this));
-            },
-            onclick: function() {
-
-                this.respondSelector("._request", function() {
-                    alert(1);
-                });
-
+//                this.$().on("click", "._request", this.onclick.bind(this));
             }
         });
 

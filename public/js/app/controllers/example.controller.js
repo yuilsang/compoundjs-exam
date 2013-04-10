@@ -9,22 +9,30 @@ define(
     [
         "app/commons/controller",
         "app/commons/url",
+        "app/commons/request",
         "app/views/request.example.view"
     ],
 
     function(
         Controller,
         URL,
+        Request,
         RequestExampleView
         ) {
 
         /** @class */
         var ExampleController = Controller.$extend(/** @lends ExampleController.prototype */{
             $init: function() {
-                console.log("ExampleController");
-
-                console.log(RequestExampleView);
-
+                RequestExampleView.on("click", "._request", this.onclick.bind(this));
+            },
+            onclick: function() {
+                this.respondSelector("._request", function() {
+                    Request.$("my").method("GET").url("/example/api/request").data({authenticity_token: $('meta[name=csrf-token]').attr('content') }).send(function() {
+                        Request.done(function(r) {
+                            console.log(r);
+                        });
+                    });
+                }.bind(this));
             }
         });
 

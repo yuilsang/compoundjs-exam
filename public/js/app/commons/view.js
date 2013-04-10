@@ -25,6 +25,15 @@ define(
                 }
             },
 
+            on: function() {
+              this.$().on.apply(this.$(), arguments);
+            },
+
+            /**
+             *
+             * @param selector
+             * @param cb
+             */
             respondSelector: function(selector, cb) {
                 if (arguments.callee.caller.arguments[0].handleObj.selector === selector) {
                     cb.apply(this, arguments.callee.caller.arguments[1]);
