@@ -9,7 +9,7 @@ require.config({
 (function() {
     require(
         [
-            "app/common/url",
+            "app/commons/url",
             "app/controllers/menu.controller",
             "app/controllers/test.controller"
         ],
