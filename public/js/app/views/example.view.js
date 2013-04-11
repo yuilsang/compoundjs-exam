@@ -16,7 +16,7 @@ define(
 
         /** @class */
         var ExampleView = View.$extend(/** @lends ExampleView.prototype */{
-            $init: function() {
+            load: function() {
                 console.log("ExampleView");
             }
         });

@@ -12,10 +12,23 @@ define(
         var View = Class.$extend(/** @lends View.prototype */{
             $init: function() {
                 this.view = null;
+                this.subviews = {};
             },
+            load: function() {
 
-            $: function(selector) {
+            },
+            $: function(selector, v) {
                 if(selector) {
+                    if(typeof selector == "string" && selector.indexOf("@") > -1 && v) {
+                        var name = selector.replace("@", "");
+                        console.log(this);
+                        this.subviews[name] = (this.view == null ? $(v) : $(v, this.view));
+                        return v;
+                    } else if(typeof selector == "string" && selector.indexOf("@") > -1) {
+                        var name = selector.replace("@", "");
+                        return this.subviews[name];
+                    }
+
                     var view = (this.view == null ? $(selector) : $(selector, this.view));
                     if(this.view == null) this.view = view;
 
@@ -62,9 +75,11 @@ define(
         });
 
 
-        View.singleton = function(methods) {
+        View.singleton = function(methods, load) {
+            load = load || true;
             var ViewClass = View.$extend(methods);
             var instance = new ViewClass();
+            if(load) instance.load();
             return instance;
         };
 

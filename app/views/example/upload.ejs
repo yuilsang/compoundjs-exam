@@ -30,9 +30,9 @@ h1.title {
 		</ul>
 	</div>
 
-	<h3>Upload</h3>
-	<div class="_upload bs-docs-example" style="padding-bottom: 24px;">
-
+	<h3>File Upload</h3>
+	<div class="_fileupload bs-docs-example" style="padding-bottom: 24px;">
+		<span class="_uploadfilename"></span>
 		<% var form = formFor("upload_test", { action: "/upload/filesave", method: "post", enctype: "multipart/form-data" }); %>
 		<%- form.begin() %>
 		<input name="file" id="file" type="file" value="" style="width:60px;height:25px" />
