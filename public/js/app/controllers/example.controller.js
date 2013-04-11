@@ -14,6 +14,7 @@ define(
         "app/views/request.example.view",
         "app/views/filelist.example.view",
         "app/views/fileupload.example.view",
+        "app/views/html5upload.example.view",
         "app/models/example.model"
     ],
 
@@ -25,6 +26,7 @@ define(
         RequestExampleView,
         FileListExampleView,
         FileUploadExampleView,
+        HTML5UploadExampleView,
         ExampleModel
         ) {
 
@@ -35,6 +37,47 @@ define(
                 RequestExampleView.on("click", "._request_sync", this.onclick.bind(this));
                 FileListExampleView.on("click", "._upload_remove", this.onclick.bind(this));
                 FileUploadExampleView.on("change", "#file", this.onchange.bind(this));
+
+                HTML5UploadExampleView.$("@dropbox").filedrop({
+                    paramname:"file",
+                    data : {
+                        authenticity_token: $('meta[name=csrf-token]').attr('content')
+                    },
+                    maxfiles: 5,
+                    maxfilesize: 5,
+                    url: "/upload/filesave.json",
+                    uploadFinished:function(i, file, response){
+//                        setTimeout(function() {
+//                            $(".progress .bar").width(0);
+//                        }, 1000);
+                    },
+                    error: function(err, file) {
+                        switch(err) {
+                            case 'BrowserNotSupported':
+                                alert('Your browser does not support HTML5 file uploads!');
+                                break;
+                            case 'TooManyFiles':
+                                alert('Too many files! Please select 5 at most! (configurable)');
+                                break;
+                            case 'FileTooLarge':
+                                alert(file.name+' is too large! Please upload files up to 2mb (configurable).');
+                                break;
+                            default:
+                                break;
+                        }
+                    },
+                    // Called before each upload is started
+                    beforeEach: function(file){
+
+                    },
+                    uploadStarted:function(i, file, len){
+                        //console.log("uploadStarted:", i, len); // file,
+                    },
+                    progressUpdated: function(i, file, progress) {
+                        console.log("progressUpdated", i, progress); // file,
+                        $(".progress .bar").width(progress+"%");
+                    }
+                });
 
                 this.onloadFileList();
             },
