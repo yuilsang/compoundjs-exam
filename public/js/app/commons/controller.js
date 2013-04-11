@@ -15,7 +15,8 @@ define(
         /** @class */
         var Controller = View.$extend(/** @lends Controller.prototype */{
             $init: function() {
-
+                this.$super();
+                this.load();
             }
         });
 
