@@ -11,7 +11,8 @@ define(
         "app/commons/url",
         "app/commons/flow",
         "app/commons/request",
-        "app/views/request.example.view"
+        "app/views/request.example.view",
+        "app/views/filelist.example.view"
     ],
 
     function(
@@ -19,7 +20,8 @@ define(
         URL,
         Flow,
         Request,
-        RequestExampleView
+        RequestExampleView,
+        FileListExampleView
         ) {
 
         /** @class */
@@ -27,7 +29,23 @@ define(
             $init: function() {
                 RequestExampleView.on("click", "._request", this.onclick.bind(this));
                 RequestExampleView.on("click", "._request_sync", this.onclick.bind(this));
+
+                this.onloadFileList();
             },
+            // 파일 목록 로드
+            onloadFileList: function() {
+                Request.$("ExampleController")
+                    .method("GET")
+                    .url("/upload/filelist.json")
+                    .send(function() {
+                        Request.done(function(r) {
+                            FileListExampleView.render("list", [r.res.filelist]);
+                        });
+                    }.bind(this));
+
+                //FileListExampleView.
+            },
+            // 클릭 이벤트 처리
             onclick: function() {
                 this.respondSelector("._request", function() {
                     Request.$("ExampleController")

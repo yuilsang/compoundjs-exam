@@ -14,10 +14,15 @@ action("filelist", function() {
     async.series([function(next) {
        // read file
        fs.readdir("files/", function(err, files) {
+           console.log("err:", err);
+           console.log("files:", files);
+
            if(err) {
                next(err);
                return;
            }
+
+
 
            next(null, files);
        });
@@ -31,7 +36,8 @@ action("filelist", function() {
                 });
             } else {
                 send({
-                    code: 1
+                    code: 1,
+                    filelist: []
                 });
             }
             return;
@@ -53,8 +59,6 @@ action("filelist", function() {
 });
 
 action("filesave", function() {
-    console.log(req);
-
     var referer = req.headers.referer || "";
     var fs = require("fs");
     var async = require("async");

@@ -16,7 +16,7 @@ define(
 
             $: function(selector) {
                 if(selector) {
-                    var view = $(selector);
+                    var view = (this.view == null ? $(selector) : $(selector, this.view));
                     if(this.view == null) this.view = view;
 
                     return view;

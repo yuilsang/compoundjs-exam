@@ -14,7 +14,7 @@ h1.title {
 	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 }
 </style>
-<div class="_example container-narrow">
+<div class="container-narrow">
 	<div class="masthead">
 	<%-include ../layouts/menu%>
 
@@ -25,13 +25,13 @@ h1.title {
 	<section>
 
 	<h3>Uploaded File List</h3>
-	<div class="bs-docs-example" style="padding-bottom: 24px;">
+	<div class="_filelist bs-docs-example" style="padding-bottom: 24px;">
 		<ul id="filelist">
 		</ul>
 	</div>
 
 	<h3>Upload</h3>
-	<div class="bs-docs-example" style="padding-bottom: 24px;">
+	<div class="_upload bs-docs-example" style="padding-bottom: 24px;">
 
 		<% var form = formFor("upload_test", { action: "/upload/filesave", method: "post", enctype: "multipart/form-data" }); %>
 		<%- form.begin() %>
