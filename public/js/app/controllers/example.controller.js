@@ -38,9 +38,6 @@ define(
                 FileListExampleView.on("click", "._upload_remove", this.onclick.bind(this));
                 FileUploadExampleView.on("change", "#file", this.onchange.bind(this));
 
-
-
-
 //                HTML5UploadExampleView.$("@dropbox").fileupload({
 //                    dataType: 'json',
 //                    add: function (e,data) {
