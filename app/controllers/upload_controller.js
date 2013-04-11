@@ -53,6 +53,9 @@ action("filelist", function() {
 });
 
 action("filesave", function() {
+    console.log(req);
+
+    var referer = req.headers.referer || "";
     var fs = require("fs");
     var async = require("async");
     var format = req.params.format || "html";
@@ -75,7 +78,7 @@ action("filesave", function() {
         if(err) {
             if(format == "html") {
                 flash('error', 'upload fail');
-                redirect("/upload");
+                redirect(referer);
             } else {
                 send({
                     code: 1
@@ -87,7 +90,7 @@ action("filesave", function() {
         // success
         if(format == "html") {
             flash('info', 'upload ok');
-            redirect("/upload");
+            redirect(referer);
         } else {
             send({
                 code: 0

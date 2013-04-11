@@ -19,3 +19,9 @@ action("api_request", function () {
        resultvalue: [1,2,3,4,5]
     });
 });
+
+action("upload", function () {
+    render({
+        title: "example#upload"
+    });
+});

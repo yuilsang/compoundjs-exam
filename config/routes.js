@@ -6,23 +6,21 @@ exports.routes = function (map) {
     map.get("/", "home#index");
 
     // ================================
-    // EXAMPLE
+    // EXAMPLE Main
     // ================================
     map.get("/example", "example#index");
+
+    // ================================
+    // Ajax 테스트
+    // ================================
     map.get("/example/request", "example#request");
     map.get("/example/api/request", "example#api_request");
 
     // ================================
-    // UPLOAD
+    // UPLOAD 기능 테스트
     // ================================
-
-    // http://localhost:3000/upload
-    map.get("/upload", "upload#index");
-
-    // http://localhost:3000/upload/filelist
+    map.get("/example/upload", "example#upload");
     map.get("/upload/filelist.:format?", "upload#filelist");
-
-    // http://localhost:3000/upload/send
     map.post("/upload/filesave.:format?", "upload#filesave");
 
 };
