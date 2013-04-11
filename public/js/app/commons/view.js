@@ -41,7 +41,7 @@ define(
             },
 
             /**
-             * 렌더
+             * render
              * @param {String} cmd
              * @param {Array=} [arg]
              */
@@ -50,7 +50,7 @@ define(
             },
 
             /**
-             * 렌더링하기
+             * rendering
              * @param cmd
              * @param cb
              */
