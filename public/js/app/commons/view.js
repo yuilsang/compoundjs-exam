@@ -14,9 +14,10 @@ define(
                 this.view = null;
                 this.subviews = {};
             },
-            load: function() {
 
+            load: function() {
             },
+
             $: function(selector, v) {
                 if(selector) {
                     if(typeof selector == "string" && selector.indexOf("@") > -1 && v) {
@@ -59,7 +60,6 @@ define(
              * @param {Array=} [arg]
              */
             render: function(cmd, arg) {
-
             },
 
             /**
@@ -74,7 +74,6 @@ define(
             }
         });
 
-
         View.singleton = function(methods, load) {
             load = load || true;
             var ViewClass = View.$extend(methods);
@@ -82,7 +81,6 @@ define(
             if(load) instance.load();
             return instance;
         };
-
 
         return View;
     }
