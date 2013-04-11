@@ -13,7 +13,8 @@ define(
         "app/commons/request",
         "app/views/request.example.view",
         "app/views/filelist.example.view",
-        "app/views/fileupload.example.view"
+        "app/views/fileupload.example.view",
+        "app/models/example.model"
     ],
 
     function(
@@ -23,7 +24,8 @@ define(
         Request,
         RequestExampleView,
         FileListExampleView,
-        FileUploadExampleView
+        FileUploadExampleView,
+        ExampleModel
         ) {
 
         /** @class */
@@ -106,19 +108,16 @@ define(
                 this.respondSelector("._upload_remove", function() {
                     var _filename = FileListExampleView.filename(e);
 
-                    Request
-                        .$("ExampleController")
-                        .method("GET")
-                        .url("/upload/fileremove.json")
-                        .data({
-                            filename: _filename
-                        })
-                        .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
-                        .send(function() {
-                            Request.done(function(r) {
+                    ExampleModel.removeFile({
+                        filename: _filename
+                    }, function(status, data) {
+                        switch(status) {
+                            case "done":
                                 FileListExampleView.render("remove", [e]);
-                            });
-                        });
+                                break;
+                        }
+                    });
+
                 }.bind(this));
             }
         });

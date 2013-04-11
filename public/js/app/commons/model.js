@@ -7,18 +7,18 @@ define(
     "app/commons/model",
 
     [
-        "app/common/request"
+        "app/commons/controller",
+        "app/commons/request"
     ],
 
     function(
+        Controller,
         Request
         ) {
 
         /** @class */
-        var Model = Request.$extend(/** @lends Model.prototype */{
-            $init: function() {
-
-            },
+        var Model = Controller.$extend(/** @lends Model.prototype */{
+            REQUEST: Request,
 
             load: function() {
 
@@ -27,8 +27,8 @@ define(
 
         Model.singleton = function(methods, load) {
             load = load || true;
-            var ViewClass = View.$extend(methods);
-            var instance = new ViewClass();
+            var ModelClass = Model.$extend(methods);
+            var instance = new ModelClass();
             if(load) instance.load();
             return instance;
         };
