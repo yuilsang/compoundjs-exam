@@ -22,5 +22,6 @@ exports.routes = function (map) {
     map.get("/example/upload", "example#upload");
     map.get("/upload/filelist.:format?", "upload#filelist");
     map.post("/upload/filesave.:format?", "upload#filesave");
+    map.get("/upload/fileremove.:format?", "upload#fileremove");
 
 };

@@ -102,3 +102,46 @@ action("filesave", function() {
         }
     });
 });
+
+action("fileremove", function() {
+    var referer = req.headers.referer || "";
+    var fs = require("fs");
+    var async = require("async");
+    var format = req.params.format || "html";
+    var file_name = req.query.filename;
+    var file_removepath = "files/" + file_name;
+
+    async.series([function(next) {
+        // file remove
+        fs.unlink(file_removepath, function (err) {
+            console.log(file_removepath, err);
+            if(err) next(err);
+            next(null);
+            return;
+        });
+
+    }], function(err, datas) {
+        // fail
+        if(err) {
+            if(format == "html") {
+                flash('error', 'file remove fail');
+                redirect(referer);
+            } else {
+                send({
+                    code: 1
+                });
+            }
+            return;
+        }
+
+        // success
+        if(format == "html") {
+            flash('info', 'file remove ok');
+            redirect(referer);
+        } else {
+            send({
+                code: 0
+            });
+        }
+    });
+});

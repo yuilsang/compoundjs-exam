@@ -29,6 +29,7 @@ define(
             $init: function() {
                 RequestExampleView.on("click", "._request", this.onclick.bind(this));
                 RequestExampleView.on("click", "._request_sync", this.onclick.bind(this));
+                FileListExampleView.on("click", "._upload_remove", this.onclick.bind(this));
 
                 this.onloadFileList();
             },
@@ -46,7 +47,7 @@ define(
                 //FileListExampleView.
             },
             // 클릭 이벤트 처리
-            onclick: function() {
+            onclick: function(e) {
                 this.respondSelector("._request", function() {
                     Request.$("ExampleController")
                         .method("GET")
@@ -83,6 +84,20 @@ define(
                     }], function(err, self) {
                         console.log(err, self);
                     });
+                }.bind(this));
+
+                this.respondSelector("._upload_remove", function() {
+                    console.log("remove");
+                    Request.$("ExampleController")
+                        .method("GET")
+                        .url("/upload/fileremove.json")
+                        .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
+                        .send(function() {
+                            Request.done(function(r) {
+                                console.log(r);
+                            });
+
+                        });
                 }.bind(this));
             }
         });

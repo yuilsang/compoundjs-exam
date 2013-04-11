@@ -26,7 +26,7 @@ define(
             },
 
             on: function() {
-              this.$().on.apply(this.$(), arguments);
+                this.$().on.apply(this.$(), arguments);
             },
 
             /**
