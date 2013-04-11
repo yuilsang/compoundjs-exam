@@ -12,7 +12,7 @@
 (function (factory) {
     if (typeof define === "function" && define.amd) {
         // Register as an anonymous AMD module:
-        define(["../core/jquery"], factory);
+        define(["../cores/jquery"], factory);
     } else {
         // Browser globals:
         factory(jQuery);
