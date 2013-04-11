@@ -24,8 +24,14 @@ define(
                 return filename;
             },
             render: function() {
+
+                this.rendering("clearlist", function(filelist) {
+                    this.$("#filelist").html();
+                });
+
                 // 목록을 그려줌.
                 this.rendering("list", function(filelist) {
+
                     for(var i=0;i<filelist.length;i++) {
                         this.$("#filelist").append("<li><span>"+filelist[i]+"</span> <a href='#' class='_upload_remove'>[x]</a></li>");
                     }

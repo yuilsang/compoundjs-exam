@@ -37,7 +37,6 @@ define(
                 RequestExampleView.on("click", "._request_sync", this.onclick.bind(this));
                 FileListExampleView.on("click", "._upload_remove", this.onclick.bind(this));
                 FileUploadExampleView.on("change", "#file", this.onchange.bind(this));
-
                 HTML5UploadExampleView.$("@dropbox").filedrop({
                     paramname:"file",
                     data : {
@@ -46,11 +45,9 @@ define(
                     maxfiles: 5,
                     maxfilesize: 5,
                     url: "/upload/filesave.json",
-                    uploadFinished:function(i, file, response){
-//                        setTimeout(function() {
-//                            $(".progress .bar").width(0);
-//                        }, 1000);
-                    },
+                    uploadFinished:function(i, file, response) {
+                        this.onloadFileList();
+                    }.bind(this),
                     error: function(err, file) {
                         switch(err) {
                             case 'BrowserNotSupported':
@@ -66,17 +63,9 @@ define(
                                 break;
                         }
                     },
-                    // Called before each upload is started
-                    beforeEach: function(file){
-
-                    },
-                    uploadStarted:function(i, file, len){
-                        //console.log("uploadStarted:", i, len); // file,
-                    },
-                    progressUpdated: function(i, file, progress) {
-                        console.log("progressUpdated", i, progress); // file,
-                        $(".progress .bar").width(progress+"%");
-                    }
+                    beforeEach: function(file) {},
+                    uploadStarted:function(i, file, len) {},
+                    progressUpdated: function(i, file, progress) {}
                 });
 
                 this.onloadFileList();
@@ -89,6 +78,7 @@ define(
                     .url("/upload/filelist.json")
                     .send(function() {
                         Request.done(function(r) {
+                            FileListExampleView.render("clearlist");
                             FileListExampleView.render("list", [r.res.filelist]);
                         });
                     }.bind(this));
