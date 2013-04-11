@@ -4,8 +4,8 @@
  */
 define(
     [
-        'module',
-        'app/common/view'
+        "module",
+        "app/common/view"
     ],
     function (
         module,
@@ -14,7 +14,6 @@ define(
 
     /** @class */
     var Resource = Class.$extend(/** @lends Resource.prototype */{
-        classname: "Resource",
 
         $init: function(xml) {
             this.xml = xml;
