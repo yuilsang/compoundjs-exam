@@ -53,7 +53,6 @@ define(
             onchange: function(e) {
                 this.respondSelector("#file", function() {
                     var filename = FileUploadExampleView.filename();
-                    console.log("onchagen:", filename);
                     FileUploadExampleView.render("filename", [filename]);
                 });
             },
