@@ -22,7 +22,6 @@ define(
                 if(selector) {
                     if(typeof selector == "string" && selector.indexOf("@") > -1 && v) {
                         var name = selector.replace("@", "");
-                        console.log(this);
                         this.subviews[name] = (this.view == null ? $(v) : $(v, this.view));
                         return v;
                     } else if(typeof selector == "string" && selector.indexOf("@") > -1) {
