@@ -17,7 +17,7 @@ define(
         /** @class */
         var ExampleModel = Model.singleton(/** @lends ExampleModel.prototype */{
             load: function() {
-
+                this.uploaderActivity = false;
             },
 
             removeFile: function(data, cb) {

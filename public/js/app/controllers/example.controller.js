@@ -37,7 +37,7 @@ define(
                 RequestExampleView.on("click", "._request_sync", this.onclick.bind(this));
                 FileListExampleView.on("click", "._upload_remove", this.onclick.bind(this));
                 FileUploadExampleView.on("change", "#file", this.onchange.bind(this));
-                HTML5UploadExampleView.$("@dropbox").filedrop({
+                HTML5UploadExampleView.$("@dropbox").filedrop({ // https://github.com/weixiyen/jquery-filedrop
                     paramname:"file",
                     data : {
                         authenticity_token: $('meta[name=csrf-token]').attr('content')
@@ -46,7 +46,6 @@ define(
                     maxfilesize: 5,
                     url: "/upload/filesave.json",
                     uploadFinished:function(i, file, response) {
-                        this.onloadFileList();
                     }.bind(this),
                     error: function(err, file) {
                         switch(err) {
@@ -64,8 +63,13 @@ define(
                         }
                     },
                     beforeEach: function(file) {},
-                    uploadStarted:function(i, file, len) {},
-                    progressUpdated: function(i, file, progress) {}
+                    uploadStarted:function(i, file, len) {
+                    }.bind(this),
+                    progressUpdated: function(i, file, progress) {},
+                    afterAll: function() {
+                        console.log("end");
+                        this.onloadFileList();
+                    }.bind(this)
                 });
 
                 this.onloadFileList();
