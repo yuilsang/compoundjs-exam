@@ -23,8 +23,6 @@ define(
             removeFile: function(data, cb) {
                 cb = cb || function() {};
 
-                console.log(this);
-
                 this.REQUEST
                     .$("ExampleModel")
                     .method("GET")
@@ -38,6 +36,5 @@ define(
         });
 
         return ExampleModel;
-
     }
 );
