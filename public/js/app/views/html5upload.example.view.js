@@ -15,7 +15,7 @@ define(
         ) {
 
         /** @class */
-        var HTML5UploadExampleView = View.singleton(/** @lends HTML5UploadExampleView.prototype */{
+        var HTML5UploadExampleView = View.object(/** @lends HTML5UploadExampleView.prototype */{
             load: function() {
                 this.$("._html5upload");
                 this.$("@dropbox", "#dropbox");

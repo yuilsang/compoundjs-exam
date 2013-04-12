@@ -15,7 +15,7 @@ define(
         ) {
 
         /** @class */
-        var FileListExampleView = View.singleton(/** @lends FileListExampleView.prototype */{
+        var FileListExampleView = View.object(/** @lends FileListExampleView.prototype */{
             load: function() {
                 this.$("._filelist");
             },

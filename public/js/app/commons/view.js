@@ -73,7 +73,7 @@ define(
             }
         });
 
-        View.singleton = function(methods, load) {
+        View.object = function(methods, load) {
             load = load || true;
             var ViewClass = View.$extend(methods);
             var instance = new ViewClass();

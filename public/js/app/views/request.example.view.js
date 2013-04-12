@@ -15,7 +15,7 @@ define(
         ) {
 
         /** @class */
-        var RequestExampleView = View.singleton(/** @lends RequestExampleView.prototype */{
+        var RequestExampleView = View.object(/** @lends RequestExampleView.prototype */{
             $init: function() {
                 this.$("._example");
             }

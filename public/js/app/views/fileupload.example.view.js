@@ -15,7 +15,7 @@ define(
         ) {
 
         /** @class */
-        var FileUploadExampleView = View.singleton(/** @lends FileUploadExampleView.prototype */{
+        var FileUploadExampleView = View.object(/** @lends FileUploadExampleView.prototype */{
             load: function() {
                 this.$("._fileupload");
                 this.$("@filename", "._uploadfilename");
