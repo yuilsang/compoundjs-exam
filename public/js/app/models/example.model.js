@@ -15,7 +15,7 @@ define(
         ) {
 
         /** @class */
-        var ExampleModel = Model.singleton(/** @lends ExampleModel.prototype */{
+        var ExampleModel = Model.object(/** @lends ExampleModel.prototype */{
             load: function() {
                 this.uploaderActivity = false;
             },

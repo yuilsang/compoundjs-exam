@@ -25,7 +25,7 @@ define(
             }
         });
 
-        Model.singleton = function(methods, load) {
+        Model.object = function(methods, load) {
             load = load || true;
             var ModelClass = Model.$extend(methods);
             var instance = new ModelClass();
