@@ -10,6 +10,8 @@ define(
 
         /** @class */
         var View = Class.$extend(/** @lends View.prototype */{
+            view: null,
+            subviews: {},
             $init: function() {
                 this.view = null;
                 this.subviews = {};
