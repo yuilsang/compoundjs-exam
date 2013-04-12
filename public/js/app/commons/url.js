@@ -15,11 +15,15 @@ define(
             }
         });
 
-        URL.controllerName = function() {
-            var paths = location.pathname.split("/");
-            var actionName = paths[1] == "" ? "home" : paths[1];
+        URL.name = function(name) {
+            if(name == "controller") {
+                var paths = location.pathname.split("/");
+                var actionName = paths[1] == "" ? "home" : paths[1];
 
-            return actionName;
+                return actionName;
+            } else if(name == "action") {
+                return "";
+            }
         };
 
         return URL;
