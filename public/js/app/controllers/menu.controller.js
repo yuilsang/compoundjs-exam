@@ -19,7 +19,7 @@ define(
         /** @class */
         var MenuController = Controller.$extend(/** @lends MenuController.prototype */{
             $init: function() {
-                var controllerName = URL.name("controller");
+                var controllerName = URL.routesName("controller");
                 this.render("selected", [controllerName]);
             },
             render: function(cmd, arg) {

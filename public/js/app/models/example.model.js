@@ -23,7 +23,7 @@ define(
             removeFile: function(data, cb) {
                 cb = cb || function() {};
 
-                this.REQUEST
+                Model.Request
                     .$("ExampleModel")
                     .method("GET")
                     .url("/upload/fileremove.json")

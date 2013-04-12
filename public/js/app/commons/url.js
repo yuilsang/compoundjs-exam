@@ -15,7 +15,7 @@ define(
             }
         });
 
-        URL.name = function(name) {
+        URL.routesName = function(name) {
             if(name == "controller") {
                 var paths = location.pathname.split("/");
                 var actionName = paths[1] == "" ? "home" : paths[1];
