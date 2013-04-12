@@ -18,12 +18,11 @@ define(
 
         /** @class */
         var Model = Controller.$extend(/** @lends Model.prototype */{
+            REQUEST: Request,
             load: function() {
 
             }
         });
-
-        Model.Request = Request;
 
         Model.object = function(methods, load) {
             load = load || true;

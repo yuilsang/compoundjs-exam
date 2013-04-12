@@ -114,11 +114,9 @@ define(
                     .$("ExampleController")
                     .method("GET")
                     .url("/upload/filelist.json")
-                    .send(function() {
-                        Request.done(function(r) {
-                            FileListExampleView.render("clearlist");
-                            FileListExampleView.render("list", [r.res.filelist]);
-                        });
+                    .send(function(r) {
+                        FileListExampleView.render("clearlist");
+                        FileListExampleView.render("list", [r.res.filelist]);
                     }.bind(this));
 
                 //FileListExampleView.
@@ -139,11 +137,8 @@ define(
                         .method("GET")
                         .url("/example/api/request")
                         .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
-                        .send(function() {
-
-                        Request.done(function(r) {
+                        .send(function(r) {
                             console.log(r);
-                        });
 
                     });
                 }.bind(this));
@@ -151,24 +146,16 @@ define(
                 // request sync 버튼 클릭 처리
                 this.respondSelector("._request_sync", function() {
                     Flow.sync([function(next) {
-                        Request
-                            .$("ExampleController")
-                            .method("GET")
-                            .url("/example/api/request")
-                            .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
-                            .send(function() {
-                            Request.done(function(r) {
-                                next(null, r);
-                            });
+                        ExampleModel.request({}, function(r) {
+                            next(null, r);
                         });
+
                     }, function(next) {
                         Request
                             .$("ExampleController")
                             .data({ data1: "23121321" })
-                            .send(function() {
-                            Request.done(function(r) {
+                            .send(function(r) {
                                 next(null, r);
-                            });
                         });
                     }], function(err, self) {
                         console.log(err, self);

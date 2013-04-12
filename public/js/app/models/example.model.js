@@ -20,17 +20,30 @@ define(
                 this.uploaderActivity = false;
             },
 
+            request: function(data, cb) {
+                cb = cb || function() {};
+
+                this.REQUEST
+                    .$("ExampleModel")
+                    .method("GET")
+                    .url("/example/api/request")
+                    .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
+                    .send(function(data) {
+                        cb(data, self);
+                    });
+            },
+
             removeFile: function(data, cb) {
                 cb = cb || function() {};
 
-                Model.Request
+                this.REQUEST
                     .$("ExampleModel")
                     .method("GET")
                     .url("/upload/fileremove.json")
                     .data(data)
                     .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
-                    .send(function(status, data) {
-                        cb(status, data);
+                    .send(function(data) {
+                        cb(data, self);
                     });
             }
         });

@@ -17,6 +17,9 @@ define(
                 this._url = "";
                 this._header = {};
                 this._method = "get";
+                this._done = function() {};
+                this._fail = function() {};
+                this._always = function() {};
                 this._data = {};
             },
 
@@ -67,6 +70,21 @@ define(
                 return this;
             },
 
+            done: function(cb) {
+                this._done = cb;
+                return this;
+            },
+
+            fail: function(cb) {
+                this._fail = cb;
+                return this;
+            },
+
+            always: function(cb) {
+                this._always = cb;
+                return this;
+            },
+
             /**
              * Request Abort
              * @returns {*}
@@ -98,7 +116,14 @@ define(
                         "res": res
                     };
 
-                    callback(status, responseProcess(result));
+                    if(status === "done") {
+                        this._done(result);
+                    } else if(status === "fail") {
+                        this._fail(result);
+                    } else if(status === "always") {
+                        this._always(result);
+                        callback(responseProcess(result));
+                    }
                 };
 
                 console.log("[Request.send]", req);
@@ -128,35 +153,35 @@ define(
             return window.__Request__[id];
         };
 
-        /**
-         * done Static Method
-         * @param {Function} callback
-         */
-        Request.done = function(callback){
-            var _a = arguments.callee.caller.arguments;
-            if(_a[0] !== "done") return;
-            callback(_a[1]);
-        };
-
-        /**
-         * fail Static Method
-         * @param {Function} callback
-         */
-        Request.fail = function(callback){
-            var _a = arguments.callee.caller.arguments;
-            if(_a[0] !== "fail") return;
-            callback(_a[1]);
-        };
-
-        /**
-         * allways Static Method
-         * @param {Function} callback
-         */
-        Request.allways = function(callback){
-            var _a = arguments.callee.caller.arguments;
-            if(_a[0] === "allways") return;
-            callback(_a[1]);
-        };
+//        /**
+//         * done Static Method
+//         * @param {Function} callback
+//         */
+//        Request.done = function(callback){
+//            var _a = arguments.callee.caller.arguments;
+//            if(_a[0] !== "done") return;
+//            callback(_a[1]);
+//        };
+//
+//        /**
+//         * fail Static Method
+//         * @param {Function} callback
+//         */
+//        Request.fail = function(callback){
+//            var _a = arguments.callee.caller.arguments;
+//            if(_a[0] !== "fail") return;
+//            callback(_a[1]);
+//        };
+//
+//        /**
+//         * allways Static Method
+//         * @param {Function} callback
+//         */
+//        Request.always = function(callback){
+//            var _a = arguments.callee.caller.arguments;
+//            if(_a[0] === "always") return;
+//            callback(_a[1]);
+//        };
 
         /**
          * response Process Static Method
