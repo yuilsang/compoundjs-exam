@@ -19,11 +19,6 @@ define(
             this.xml = xml;
             this.htmls = {};
 
-            this.init();
-        },
-
-        // initalize
-        init: function() {
             this._parseResourceXML();
         },
 
