@@ -15,10 +15,8 @@ define(
         ) {
 
         /** @class */
-        var FileListExampleView = View.object(/** @lends FileListExampleView.prototype */{
-            load: function() {
-                this.$("._filelist");
-            },
+        var FileListExampleView = View.object("._filelist", /** @lends FileListExampleView.prototype */{
+
             filename: function(e) {
                 var filename = $("span", $(e.currentTarget).parent("li")).text();
                 return filename;

@@ -8,18 +8,31 @@ define(
 
     [
         "app/commons/controller",
-        "app/commons/url"
+        "app/commons/view"
     ],
 
     function(
         Controller,
-        URL
+        View
         ) {
+
+        var MyView = View.object($(".test").get(0), {
+            load: function() {
+                this.el()
+                this.$("vv", $("span"));
+            },
+            render: function() {
+                this.rendering("border", function() {
+                    this.$().css("border", "2px solid blue");
+                }.bind(this));
+            }
+        });
 
         /** @class */
         var TestController = Controller.$extend(/** @lends TestController.prototype */{
             $init: function() {
                 console.log("TestController");
+                MyView.render("border");
             }
         });
 

@@ -11,6 +11,7 @@ define(
         "app/commons/url",
         "app/commons/flow",
         "app/commons/request",
+        "app/views/example.view",
         "app/views/request.example.view",
         "app/views/filelist.example.view",
         "app/views/fileupload.example.view",
@@ -33,6 +34,9 @@ define(
         /** @class */
         var ExampleController = Controller.$extend(/** @lends ExampleController.prototype */{
             $init: function() {
+
+
+
                 RequestExampleView.on("click", "._request", this.onclick.bind(this));
                 RequestExampleView.on("click", "._request_sync", this.onclick.bind(this));
                 FileListExampleView.on("click", "._upload_remove", this.onclick.bind(this));

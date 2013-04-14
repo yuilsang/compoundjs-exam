@@ -10,19 +10,22 @@ require.config({
     require(
         [
             "app/commons/url",
-            "app/controllers/menu.controller",
-            "app/controllers/test.controller",
-            "app/controllers/example.controller"
+//            "app/controllers/menu.controller",
+//            "app/controllers/example.controller",
+            "app/controllers/test.controller"
         ],
         function(
             URL,
-            MenuController,
-            TestController,
-            ExampleController
+//            MenuController,
+//            ExampleController,
+            TestController
             ) {
-                new MenuController();
-                new TestController();
-                new ExampleController();
+                if (URL.routesName("controller") == "test") {
+                    new TestController();
+                } else {
+                    new MenuController();
+                    new ExampleController();
+                }
         }
     );
 }).call(this);

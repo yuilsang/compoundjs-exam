@@ -15,11 +15,17 @@ define(
         ) {
 
         /** @class */
-        var RequestExampleView = View.object(/** @lends RequestExampleView.prototype */{
-            $init: function() {
-                this.$("._example");
+        var RequestExampleView = View.object("._example", /** @lends RequestExampleView.prototype */{
+        });
+
+
+        var v = View.obj($("h3").get(0), {
+            load: function() {
+
+                this.style.border = "1px solid red";
             }
         });
+
 
         return RequestExampleView;
 
