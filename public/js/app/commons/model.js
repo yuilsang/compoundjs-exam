@@ -19,7 +19,6 @@ define(
         /** @class */
         var Model = Controller.$extend(/** @lends Model.prototype */{
             REQUEST: Request,
-
             load: function() {
 
             }

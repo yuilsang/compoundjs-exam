@@ -4,7 +4,7 @@
  */
 define(
 
-    "app/controllers/example.view",
+    "app/views/example.view",
 
     [
         "app/commons/view"
@@ -20,6 +20,8 @@ define(
                 console.log("ExampleView");
             }
         });
+
+
 
         return ExampleView;
 

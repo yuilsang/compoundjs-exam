@@ -15,11 +15,12 @@ define(
         ) {
 
         /** @class */
-        var FileUploadExampleView = View.object(/** @lends FileUploadExampleView.prototype */{
+        var FileUploadExampleView = View.object("._fileupload", /** @lends FileUploadExampleView.prototype */{
             load: function() {
-                this.$("._fileupload");
                 this.$("@filename", "._uploadfilename");
                 this.$("@file", "#file");
+
+                this.$("@view", ".ff.")
             },
             filename: function() {
                 return this.$("@file").val();

@@ -10,33 +10,31 @@ define(
 
         /** @class */
         var View = Class.$extend(/** @lends View.prototype */{
-            view: null,
-            subviews: {},
-            $init: function() {
-                this.view = null;
-                this.subviews = {};
+            $init: function(element, options) {
+                this.options = $.extend({}, options);
+                this.element = element || null;
+                if(this.element) this.load();
             },
 
             load: function() {
+
             },
 
-            $: function(selector, v) {
-                if(selector) {
-                    if(typeof selector == "string" && selector.indexOf("@") > -1 && v) {
-                        var name = selector.replace("@", "");
-                        this.subviews[name] = (this.view == null ? $(v) : $(v, this.view));
-                        return v;
-                    } else if(typeof selector == "string" && selector.indexOf("@") > -1) {
-                        var name = selector.replace("@", "");
-                        return this.subviews[name];
-                    }
+            unload: function() {
 
-                    var view = (this.view == null ? $(selector) : $(selector, this.view));
-                    if(this.view == null) this.view = view;
+            },
 
-                    return view;
+            setElement: function(element) {
+                if(element) this.unload();
+                this.element = element || null;
+                if(element) this.load();
+            },
+
+            $: function(query, val) {
+                if(arguments.length>0) {
+                    return $(query, this.element);
                 } else {
-                    return this.view;
+                    return $(this.element);
                 }
             },
 
@@ -49,7 +47,7 @@ define(
              * @param selector
              * @param cb
              */
-            respondSelector: function(selector, cb) {
+            responding: function(selector, cb) {
                 if (arguments.callee.caller.arguments[0].handleObj.selector === selector) {
                     cb.apply(this, arguments.callee.caller.arguments[1]);
                 }
@@ -75,15 +73,19 @@ define(
             }
         });
 
-        View.object = function(methods, load) {
-            load = load || true;
-            var ViewClass = View.$extend(methods);
-            var instance = new ViewClass();
-            if(load) instance.load();
-            return instance;
+
+
+        View.object = function(element, methods) {
+            var MyViewClass = View.$extend(methods);
+            return new MyViewClass(element);
         };
 
         return View;
     }
 );
 
+
+Function.prototype.define = function(prop, desc) {
+    Object.defineProperty(this.prototype, prop, desc);
+    return Object.__;
+};

@@ -1,7 +1,7 @@
 /**
 * Classy - classy classes for JavaScript
 *
-* :copyright: (c) 2011 by Armin Ronacher. 
+* :copyright: (c) 2011 by Armin Ronacher.
 * :license: BSD.
 */;
 (function(undefined) {
@@ -65,7 +65,7 @@ in combination with other libraries. */
     Class.$classyVersion = CLASSY_VERSION;
 
     /* extend functionality */
-    Class.$extend = function(properties) {
+    Class.$extend = function(properties, cb) {
         var super_prototype = this.prototype;
 
         /* disable constructors and instanciate prototype. Because the
@@ -129,6 +129,9 @@ return the class */
         rv.constructor = rv;
         rv.$extend = Class.$extend;
         rv.$withData = Class.$withData;
+
+        if(cb) cb(rv);
+
         return rv;
     };
 
