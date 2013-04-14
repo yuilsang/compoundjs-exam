@@ -16,10 +16,10 @@ define(
         View
         ) {
 
+
         var MyView = View.object($(".test").get(0), {
             load: function() {
-                this.el()
-                this.$("vv", $("span"));
+                console.log("load")
             },
             render: function() {
                 this.rendering("border", function() {

@@ -11,22 +11,23 @@ define(
         /** @class */
         var View = Class.$extend(/** @lends View.prototype */{
             $init: function(element, options) {
-                this.model = {};
-                this.model.element = null;
-
                 this.options = $.extend({}, options);
-                this.element(element);
+                this.element = element || null;
+                if(this.element) this.load();
             },
 
             load: function() {
 
             },
 
-            element: function(element) {
-                this.element = element || null;
-                this.$ = $(this.element)
+            unload: function() {
 
-                if(this.element) this.load();
+            },
+
+            setElement: function(element) {
+                if(element) this.unload();
+                this.element = element || null;
+                if(element) this.load();
             },
 
             $: function(query, val) {
@@ -38,7 +39,7 @@ define(
             },
 
             on: function() {
-                this.$.on.apply(this.$(), arguments);
+                this.$().on.apply(this.$(), arguments);
             },
 
             /**
