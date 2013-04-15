@@ -7,17 +7,20 @@ define(
     "app/controllers/menu.controller",
 
     [
-        "app/commons/controller",
+        "app/commons/view",
         "app/commons/url"
     ],
 
     function(
-        Controller,
+        View,
         URL
         ) {
 
         /** @class */
-        var MenuController = Controller.$extend(/** @lends MenuController.prototype */{
+        var MenuController = View.$extend(/** @lends MenuController.prototype */{
+            $init: function() {
+                this.element($("._menu").get(0));
+            },
             load: function() {
                 var controllerName = URL.routesName("controller");
                 this.render("selected", [controllerName]);

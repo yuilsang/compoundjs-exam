@@ -15,22 +15,22 @@ define(
         ) {
 
         /** @class */
-        var FileUploadExampleView = View.object("._fileupload", /** @lends FileUploadExampleView.prototype */{
-            load: function() {
-                this.$("@filename", "._uploadfilename");
-                this.$("@file", "#file");
-
-                this.$("@view", ".ff.")
-            },
-            filename: function() {
-                return this.$("@file").val();
-            },
-            render: function() {
-                // 목록내 삭제.
-                this.rendering("filename", function(str) {
-                    this.$("@filename").html(str);
-                });
-            }
+        var FileUploadExampleView = View.object($("._fileupload"), /** @lends FileUploadExampleView.prototype */{
+//            load: function() {
+//                this.$("@filename", "._uploadfilename");
+//                this.$("@file", "#file");
+//
+//                this.$("@view", ".ff.")
+//            },
+//            filename: function() {
+//                return this.$("@file").val();
+//            },
+//            render: function() {
+//                // 목록내 삭제.
+//                this.rendering("filename", function(str) {
+//                    this.$("@filename").html(str);
+//                });
+//            }
         });
 
         return FileUploadExampleView;

@@ -21,8 +21,6 @@ define(
             }
         });
 
-
-
         return ExampleView;
 
     }

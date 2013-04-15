@@ -30,23 +30,21 @@ define(
         /** @class */
         var TestController = View.$extend(/** @lends TestController.prototype */{
             $init: function() {
+                console.log("213132")
                 this.element($(".testcontroller"));
-            },
-
-            render: function(cmd) {
-                console.log("TestController.render");
-
-                this.rendering("border", function() {
-                    this.$().css("border", "2px solid orange");
-                }, this);
             },
             load: function() {
                 console.log("TestController.load");
 
                 this.render("border");
 
-//                MyView.render("border");
+            },
+            render: function(cmd) {
+                console.log("TestController.render");
 
+                this.rendering("border", function() {
+                    this.$().css("border", "2px solid orange");
+                }, this);
             }
         });
 

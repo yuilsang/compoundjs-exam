@@ -92,18 +92,12 @@ define(
             }
         });
 
-
-
         View.object = function(element, methods) {
             var len = element.length || 0;
 
             if(len > 0) {
                 element = element.get(0);
             }
-
-
-
-            console.log("el:", element);
 
             var MyViewClass = View.$extend(methods);
             return new MyViewClass(element);

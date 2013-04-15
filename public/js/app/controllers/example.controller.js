@@ -7,10 +7,10 @@ define(
     "app/controllers/example.controller",
 
     [
-        "app/commons/controller",
         "app/commons/url",
         "app/commons/flow",
         "app/commons/request",
+        "app/commons/view",
         "app/views/example.view",
         "app/views/request.example.view",
         "app/views/filelist.example.view",
@@ -20,10 +20,10 @@ define(
     ],
 
     function(
-        Controller,
         URL,
         Flow,
         Request,
+        View,
         RequestExampleView,
         FileListExampleView,
         FileUploadExampleView,
@@ -32,15 +32,12 @@ define(
         ) {
 
         /** @class */
-        var ExampleController = Controller.$extend(/** @lends ExampleController.prototype */{
+        var ExampleController = View.$extend(/** @lends ExampleController.prototype */{
             $init: function() {
-
-
-
                 RequestExampleView.on("click", "._request", this.onclick.bind(this));
-                RequestExampleView.on("click", "._request_sync", this.onclick.bind(this));
-                FileListExampleView.on("click", "._upload_remove", this.onclick.bind(this));
-                FileUploadExampleView.on("change", "#file", this.onchange.bind(this));
+//                RequestExampleView.on("click", "._request_sync", this.onclick.bind(this));
+//                FileListExampleView.on("click", "._upload_remove", this.onclick.bind(this));
+//                FileUploadExampleView.on("change", "#file", this.onchange.bind(this));
 
 //                HTML5UploadExampleView.$("@dropbox").fileupload({
 //                    dataType: 'json',
@@ -126,7 +123,7 @@ define(
                 //FileListExampleView.
             },
             onchange: function(e) {
-                this.respondSelector("#file", function() {
+                this.responding("#file", function() {
                     var filename = FileUploadExampleView.filename();
                     FileUploadExampleView.render("filename", [filename]);
                 });
@@ -135,7 +132,7 @@ define(
             onclick: function(e) {
 
                 // request 버튼 클릭 처리
-                this.respondSelector("._request", function() {
+                this.responding("._request", function() {
                     Request
                         .$("ExampleController")
                         .method("GET")
@@ -148,7 +145,7 @@ define(
                 }.bind(this));
 
                 // request sync 버튼 클릭 처리
-                this.respondSelector("._request_sync", function() {
+                this.responding("._request_sync", function() {
                     Flow.sync([function(next) {
                         ExampleModel.request({}, function(r) {
                             next(null, r);
@@ -167,7 +164,7 @@ define(
                 }.bind(this));
 
                 // 파일 삭제 버튼 클릭 처리
-                this.respondSelector("._upload_remove", function() {
+                this.responding("._upload_remove", function() {
                     var _filename = FileListExampleView.filename(e);
 
                     ExampleModel.removeFile({

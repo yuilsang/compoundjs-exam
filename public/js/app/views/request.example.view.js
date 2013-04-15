@@ -15,15 +15,8 @@ define(
         ) {
 
         /** @class */
-        var RequestExampleView = View.object("._example", /** @lends RequestExampleView.prototype */{
-        });
+        var RequestExampleView = View.object($("._example"), /** @lends RequestExampleView.prototype */{
 
-
-        var v = View.obj($("h3").get(0), {
-            load: function() {
-
-                this.style.border = "1px solid red";
-            }
         });
 
 
