@@ -33,11 +33,7 @@ define(
         /** @class */
         var ExampleUploadController = View.$extend(/** @lends ExampleUploadController.prototype */{
             $init: function() {
-
                 this.element($(".uploadcontroller"));
-
-
-
             },
             load: function() {
                 console.log('load');

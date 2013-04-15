@@ -16,7 +16,6 @@ define(
 
         /** @class */
         var Model = Class.$extend(/** @lends Model.prototype */{
-            REQUEST: Request,
             $init: function() {
 
             },
@@ -33,6 +32,8 @@ define(
                 }
                 return this[v];
             }
+        }, function(CLASS) {
+            CLASS.REQUEST = Request;
         });
 
         Model.object = function(methods, load) {

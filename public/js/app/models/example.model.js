@@ -21,9 +21,10 @@ define(
             },
 
             request: function(data, cb) {
+                console.log("request");
                 cb = cb || function() {};
 
-                this.REQUEST
+                Model.REQUEST
                     .$("ExampleModel")
                     .method("GET")
                     .url("/example/api/request")
@@ -36,7 +37,7 @@ define(
             removeFile: function(data, cb) {
                 cb = cb || function() {};
 
-                this.REQUEST
+                Model.REQUEST
                     .$("ExampleModel")
                     .method("GET")
                     .url("/upload/fileremove.json")
