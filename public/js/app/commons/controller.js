@@ -6,17 +6,10 @@ define(
 
     "app/commons/controller",
 
-    [
-        "app/commons/view"
-    ],
-
-    function(View) {
+    function() {
 
         /** @class */
-        var Controller = View.$extend(/** @lends Controller.prototype */{
-            setView: function() {
-
-            }
+        var Controller = Class.$extend(/** @lends Controller.prototype */{
         });
 
         return Controller;

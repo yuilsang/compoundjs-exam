@@ -7,12 +7,10 @@ define(
     "app/controllers/test.controller",
 
     [
-        "app/commons/controller",
         "app/commons/view"
     ],
 
     function(
-        Controller,
         View
         ) {
 //        var MyView = View.object($(".test"), {
@@ -30,7 +28,7 @@ define(
 //        });
 
         /** @class */
-        var TestController = Controller.$extend(/** @lends TestController.prototype */{
+        var TestController = View.$extend(/** @lends TestController.prototype */{
             $init: function() {
                 this.element($(".testcontroller"));
             },
