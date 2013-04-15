@@ -35,8 +35,8 @@ define(
                 this.element($(".testcontroller"));
             },
 
-            render: function() {
-                console.log("TestController.render", this.$());
+            render: function(cmd) {
+                console.log("TestController.render");
 
                 this.rendering("border", function() {
                     this.$().css("border", "2px solid orange");

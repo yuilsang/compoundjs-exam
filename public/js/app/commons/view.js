@@ -38,14 +38,17 @@ define(
             },
 
             options: function(options) {
-                this._options = $.extend(this._options, options);
+                if(options) {
+                    this._options = $.extend(this._options, options);
+                } else {
+                    return this._options;
+                }
             },
 
             $: function(query, val) {
                 if(arguments.length > 0) {
                     return $(query, this.element());
                 } else {
-                    console.log(this.element());
                     return $(this.element());
                 }
             },
@@ -70,7 +73,7 @@ define(
             /**
              * render
              * @param {String} cmd
-             * @param {Array=} [arg]
+             * @param {Array|} [arg]
              */
             render: function(cmd, arg) {
             },
