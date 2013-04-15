@@ -26,6 +26,14 @@ define(
             }
         };
 
+        URL.controller = function(name) {
+            if(name) {
+                return (this.routesName("controller") === name ? true : false)
+            } else {
+                return this.routesName("controller");
+            }
+        };
+
         URL.action = function(name) {
             if(name) {
                 return (this.routesName("action") === name ? true : false)
