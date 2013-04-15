@@ -36,70 +36,6 @@ define(
 
                 this.element($(".uploadcontroller"));
 
-//                HTML5UploadExampleView.$("@dropbox").fileupload({
-//                    dataType: 'json',
-//                    add: function (e,data) {
-//                        $('#progress-bar').css('width', '0%');
-//                        $('#progress').show();
-//                        data.submit();
-//                    },
-//                    progressall: function (e, data) {
-//                        var progress = parseInt(data.loaded / data.total * 100, 10) + '%';
-//                        $('#progress-bar').css('width', progress);
-//                    },
-//                    done: function (e, data) {
-//                        $.each(data.files, function (index, file) {
-//                            $('<p/>').text(file.name).appendTo(document.body);
-//                        });
-//                        $('#progress').fadeOut();
-//                    }
-//                });
-
-//                var fc = 1;
-//                var filecount = 0;
-//                HTML5UploadExampleView.$("dropbox").filedrop({ // https://github.com/weixiyen/jquery-filedrop
-//                    paramname:"file",
-//                    data : {
-//                        authenticity_token: $('meta[name=csrf-token]').attr('content')
-//                    },
-//                    maxfiles: 25,
-//                    maxfilesize: 25,
-//                    url: "/upload/filesave.json",
-//                    uploadFinished:function(i, file, response) {
-//
-//                    }.bind(this),
-//                    error: function(err, file) {
-//                        switch(err) {
-//                            case 'BrowserNotSupported':
-//                                alert('Your browser does not support HTML5 file uploads!');
-//                                break;
-//                            case 'TooManyFiles':
-//                                alert('Too many files! Please select 5 at most! (configurable)');
-//                                break;
-//                            case 'FileTooLarge':
-//                                alert(file.name+' is too large! Please upload files up to 2mb (configurable).');
-//                                break;
-//                            default:
-//                                break;
-//                        }
-//                    },
-//                    beforeEach: function(file) {},
-//                    uploadStarted:function(i, file, len) {
-//                        filecount = len;
-//                    }.bind(this),
-//                    globalProgressUpdated: function(progress) {
-//
-//                        var n = parseInt((fc / filecount) * 100);
-//                        $(".progress .bar").width(n+"%");
-//                    },
-//                    progressUpdated: function(i, file, progress) {
-//
-//                    },
-//                    afterAll: function() {
-//                        $(".progress .bar").width("0%");
-//                        this.onloadFileList();
-//                    }.bind(this)
-//                });
 
 
             },
@@ -108,6 +44,43 @@ define(
 
                 FileListExampleView.on("click", "._upload_remove", this.onclick.bind(this));
                 FileUploadExampleView.on("change", "#file", this.onchange.bind(this));
+                HTML5UploadExampleView.$().filedrop({ // https://github.com/weixiyen/jquery-filedrop
+                    paramname:"file",
+                    data : {
+                        authenticity_token: $('meta[name=csrf-token]').attr('content')
+                    },
+                    maxfiles: 25,
+                    maxfilesize: 25,
+                    url: "/upload/filesave.json",
+                    uploadFinished:function(i, file, response) {
+
+                    }.bind(this),
+                    error: function(err, file) {
+                        switch(err) {
+                            case 'BrowserNotSupported':
+                                alert('Your browser does not support HTML5 file uploads!');
+                                break;
+                            case 'TooManyFiles':
+                                alert('Too many files! Please select 5 at most! (configurable)');
+                                break;
+                            case 'FileTooLarge':
+                                alert(file.name+' is too large! Please upload files up to 2mb (configurable).');
+                                break;
+                            default:
+                                break;
+                        }
+                    },
+                    beforeEach: function(file) {},
+                    uploadStarted:function(i, file, len) {},
+                    globalProgressUpdated: function(progress) {
+//                        $(".progress .bar").width(n+"%");
+                    },
+                    progressUpdated: function(i, file, progress) {},
+                    afterAll: function() {
+                        console.log("afterAll");
+                        this.onloadFileList();
+                    }.bind(this)
+                });
 
 
                 this.onloadFileList();
@@ -143,7 +116,6 @@ define(
                         .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
                         .send(function(r) {
                             console.log(r);
-
                         });
                 }.bind(this));
 
@@ -172,12 +144,8 @@ define(
 
                     ExampleModel.removeFile({
                         filename: _filename
-                    }, function(status, data) {
-                        switch(status) {
-                            case "done":
-                                FileListExampleView.render("remove", [e]);
-                                break;
-                        }
+                    }, function(data) {
+                        FileListExampleView.render("remove", [e]);
                     });
 
                 }.bind(this));

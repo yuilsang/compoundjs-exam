@@ -17,15 +17,23 @@ define(
         /** @class */
         var FileListExampleView = View.object($("._filelist"), /** @lends FileListExampleView.prototype */{
 
+            /**
+             * filenmae 가져오기
+             * @param e
+             * @returns {*|jQuery}
+             */
             filename: function(e) {
                 var filename = $("span", $(e.currentTarget).parent("li")).text();
                 return filename;
             },
-            render: function() {
 
+            /**
+             * render
+             */
+            render: function() {
                 // 목록 비우기
                 this.rendering("clearlist", function() {
-                    this.$().html();
+                    this.$().html("");
                 });
 
                 // 목록 노출
@@ -37,6 +45,7 @@ define(
 
                 // 목록 삭제
                 this.rendering("remove", function(e) {
+                    console.log(e);
                     var el = $(e.currentTarget).parent("li");
                     $(el).remove();
                 });
