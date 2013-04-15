@@ -35,7 +35,8 @@ require.config({
                         });
 
                     }
-
+                } else {
+                    new MenuController($("._menu").get(0));
                 }
         }
     );
