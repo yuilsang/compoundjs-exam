@@ -34,6 +34,7 @@ define(
                 if(arguments.length>0) {
                     return $(query, this.element);
                 } else {
+                    console.log(this.element);
                     return $(this.element);
                 }
             },

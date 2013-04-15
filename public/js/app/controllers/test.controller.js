@@ -15,13 +15,13 @@ define(
         Controller,
         View
         ) {
-
-
         var MyView = View.object($(".test").get(0), {
             load: function() {
-                console.log("load")
+                console.log("MyView.load");
             },
             render: function() {
+                console.log("MyView.render");
+
                 this.rendering("border", function() {
                     this.$().css("border", "2px solid blue");
                 }.bind(this));
@@ -31,7 +31,8 @@ define(
         /** @class */
         var TestController = Controller.$extend(/** @lends TestController.prototype */{
             $init: function() {
-                console.log("TestController");
+                console.log("TestController.$init");
+
                 MyView.render("border");
             }
         });

@@ -11,7 +11,7 @@ require.config({
         [
             "app/commons/url",
 //            "app/controllers/menu.controller",
-            "app/controllers/example.controller",
+//            "app/controllers/example.controller",
             "app/controllers/test.controller"
         ],
         function(

@@ -123,8 +123,7 @@ without a try/finally here. */
             if (value !== undefined) rv[key] = value;
         }
 
-        /* copy prototype and constructor over, reattach $extend and
-return the class */
+        /* copy prototype and constructor over, reattach $extend and return the class */
         rv.prototype = prototype;
         rv.constructor = rv;
         rv.$extend = Class.$extend;

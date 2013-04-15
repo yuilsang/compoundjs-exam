@@ -14,10 +14,17 @@ define(
 
         /** @class */
         var Controller = View.$extend(/** @lends Controller.prototype */{
-            $init: function() {
+
+            $init: function(view) {
                 this.$super();
-                this.load();
+                this.view = view || null;
+                if(this.view) this.load();
+            },
+
+            load: function() {
+
             }
+
         });
 
         return Controller;
