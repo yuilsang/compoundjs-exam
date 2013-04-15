@@ -4,14 +4,13 @@
  */
 define(
 
-    "app/controllers/example.controller",
+    "app/controllers/example.upload.controller",
 
     [
         "app/commons/url",
         "app/commons/flow",
         "app/commons/request",
         "app/commons/view",
-        "app/views/example.view",
         "app/views/request.example.view",
         "app/views/filelist.example.view",
         "app/views/fileupload.example.view",
@@ -32,12 +31,10 @@ define(
         ) {
 
         /** @class */
-        var ExampleController = View.$extend(/** @lends ExampleController.prototype */{
+        var ExampleUploadController = View.$extend(/** @lends ExampleUploadController.prototype */{
             $init: function() {
-                RequestExampleView.on("click", "._request", this.onclick.bind(this));
-//                RequestExampleView.on("click", "._request_sync", this.onclick.bind(this));
-//                FileListExampleView.on("click", "._upload_remove", this.onclick.bind(this));
-//                FileUploadExampleView.on("change", "#file", this.onchange.bind(this));
+
+                this.element($(".uploadcontroller"));
 
 //                HTML5UploadExampleView.$("@dropbox").fileupload({
 //                    dataType: 'json',
@@ -58,54 +55,60 @@ define(
 //                    }
 //                });
 
-                var fc = 1;
-                var filecount = 0;
-                HTML5UploadExampleView.$("@dropbox").filedrop({ // https://github.com/weixiyen/jquery-filedrop
-                    paramname:"file",
-                    data : {
-                        authenticity_token: $('meta[name=csrf-token]').attr('content')
-                    },
-                    maxfiles: 25,
-                    maxfilesize: 25,
-                    url: "/upload/filesave.json",
-                    uploadFinished:function(i, file, response) {
+//                var fc = 1;
+//                var filecount = 0;
+//                HTML5UploadExampleView.$("dropbox").filedrop({ // https://github.com/weixiyen/jquery-filedrop
+//                    paramname:"file",
+//                    data : {
+//                        authenticity_token: $('meta[name=csrf-token]').attr('content')
+//                    },
+//                    maxfiles: 25,
+//                    maxfilesize: 25,
+//                    url: "/upload/filesave.json",
+//                    uploadFinished:function(i, file, response) {
+//
+//                    }.bind(this),
+//                    error: function(err, file) {
+//                        switch(err) {
+//                            case 'BrowserNotSupported':
+//                                alert('Your browser does not support HTML5 file uploads!');
+//                                break;
+//                            case 'TooManyFiles':
+//                                alert('Too many files! Please select 5 at most! (configurable)');
+//                                break;
+//                            case 'FileTooLarge':
+//                                alert(file.name+' is too large! Please upload files up to 2mb (configurable).');
+//                                break;
+//                            default:
+//                                break;
+//                        }
+//                    },
+//                    beforeEach: function(file) {},
+//                    uploadStarted:function(i, file, len) {
+//                        filecount = len;
+//                    }.bind(this),
+//                    globalProgressUpdated: function(progress) {
+//
+//                        var n = parseInt((fc / filecount) * 100);
+//                        $(".progress .bar").width(n+"%");
+//                    },
+//                    progressUpdated: function(i, file, progress) {
+//
+//                    },
+//                    afterAll: function() {
+//                        $(".progress .bar").width("0%");
+//                        this.onloadFileList();
+//                    }.bind(this)
+//                });
 
-                    }.bind(this),
-                    error: function(err, file) {
-                        switch(err) {
-                            case 'BrowserNotSupported':
-                                alert('Your browser does not support HTML5 file uploads!');
-                                break;
-                            case 'TooManyFiles':
-                                alert('Too many files! Please select 5 at most! (configurable)');
-                                break;
-                            case 'FileTooLarge':
-                                alert(file.name+' is too large! Please upload files up to 2mb (configurable).');
-                                break;
-                            default:
-                                break;
-                        }
-                    },
-                    beforeEach: function(file) {},
-                    uploadStarted:function(i, file, len) {
-                        filecount = len;
-                    }.bind(this),
-                    globalProgressUpdated: function(progress) {
 
-//                        console.log("globalProgressUpdated:", progress);
+            },
+            load: function() {
+                console.log('load');
 
-                        var n = parseInt((fc / filecount) * 100);
-                        $(".progress .bar").width(n+"%");
-                    },
-                    progressUpdated: function(i, file, progress) {
-//                        console.log(progress);
+                FileListExampleView.on("click", "._upload_remove", this.onclick.bind(this));
+                FileUploadExampleView.on("change", "#file", this.onchange.bind(this));
 
-                    },
-                    afterAll: function() {
-                        $(".progress .bar").width("0%");
-                        this.onloadFileList();
-                    }.bind(this)
-                });
 
                 this.onloadFileList();
             },
@@ -141,7 +144,7 @@ define(
                         .send(function(r) {
                             console.log(r);
 
-                    });
+                        });
                 }.bind(this));
 
                 // request sync 버튼 클릭 처리
@@ -157,7 +160,7 @@ define(
                             .data({ data1: "23121321" })
                             .send(function(r) {
                                 next(null, r);
-                        });
+                            });
                     }], function(err, self) {
                         console.log(err, self);
                     });
@@ -181,7 +184,7 @@ define(
             }
         });
 
-        return ExampleController;
+        return ExampleUploadController;
 
     }
 );

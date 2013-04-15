@@ -16,13 +16,21 @@ define(
         });
 
         URL.routesName = function(name) {
+            var paths = location.pathname.split("/");
+            var controllerName = (paths[1] == "" ? "home" : paths[1]);
+            var actionName = paths[2] || null;
             if(name == "controller") {
-                var paths = location.pathname.split("/");
-                var actionName = paths[1] == "" ? "home" : paths[1];
-
-                return actionName;
+                return controllerName;
             } else if(name == "action") {
-                return "";
+                return actionName;
+            }
+        };
+
+        URL.action = function(name) {
+            if(name) {
+                return (this.routesName("action") === name ? true : false)
+            } else {
+                return this.routesName("action");
             }
         };
 

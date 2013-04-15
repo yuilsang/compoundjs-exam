@@ -19,7 +19,6 @@ define(
 
         });
 
-
         return RequestExampleView;
 
     }

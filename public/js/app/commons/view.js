@@ -12,23 +12,27 @@ define(
         var View = Class.$extend(/** @lends View.prototype */{
             $constructor: function() {
                 this._element = null;
+                this._jQuerys = {};
                 this._options = {};
             },
+
             $init: function(element, options) {
                 this.element(element);
                 this.options(options);
             },
 
-            load: function() {
+            $unload: function() {
+            },
 
+            load: function() {
             },
 
             unload: function() {
-
             },
 
             element: function(element) {
                 if(element) {
+                    this.$unload();
                     this.unload();
                     this._element = element;
                     this.load();
@@ -45,9 +49,12 @@ define(
                 }
             },
 
-            $: function(query, val) {
-                if(arguments.length > 0) {
-                    return $(query, this.element());
+            $: function(key, query) {
+                if(key && query) {
+                    this._jQuerys[key] = $(query, this.element());
+                    return this._jQuerys[key];
+                } if(key) {
+                    return this._jQuerys[key] || null;
                 } else {
                     return $(this.element());
                 }
