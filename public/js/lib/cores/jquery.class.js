@@ -112,6 +112,7 @@ without a try/finally here. */
         var rv = function() {
             if (disable_constructor) return;
             var proper_this = root === this ? cheapNew(arguments.callee) : this;
+            if (proper_this.$constructor) proper_this.$constructor.apply(proper_this, arguments);
             if (proper_this.$init) proper_this.$init.apply(proper_this, arguments);
             proper_this.$class = rv;
             return proper_this;

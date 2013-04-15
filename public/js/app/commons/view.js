@@ -10,10 +10,13 @@ define(
 
         /** @class */
         var View = Class.$extend(/** @lends View.prototype */{
+            $constructor: function() {
+                this._element = null;
+                this._options = {};
+            },
             $init: function(element, options) {
-                this.options = $.extend({}, options);
-                this.element = element || null;
-                if(this.element) this.load();
+                this.element(element);
+                this.options(options);
             },
 
             load: function() {
@@ -24,18 +27,26 @@ define(
 
             },
 
-            setElement: function(element) {
-                if(element) this.unload();
-                this.element = element || null;
-                if(element) this.load();
+            element: function(element) {
+                if(element) {
+                    this.unload();
+                    this._element = element;
+                    this.load();
+                } else {
+                    return this._element;
+                }
+            },
+
+            options: function(options) {
+                this._options = $.extend(this._options, options);
             },
 
             $: function(query, val) {
-                if(arguments.length>0) {
-                    return $(query, this.element);
+                if(arguments.length > 0) {
+                    return $(query, this.element());
                 } else {
-                    console.log(this.element);
-                    return $(this.element);
+                    console.log(this.element());
+                    return $(this.element());
                 }
             },
 
@@ -47,8 +58,10 @@ define(
              *
              * @param selector
              * @param cb
+             * @param delegate
              */
-            responding: function(selector, cb) {
+            responding: function(selector, cb, delegate) {
+                if (delegate) cb = cb.bind(delegate);
                 if (arguments.callee.caller.arguments[0].handleObj.selector === selector) {
                     cb.apply(this, arguments.callee.caller.arguments[1]);
                 }
@@ -66,8 +79,10 @@ define(
              * rendering
              * @param cmd
              * @param cb
+             * @param delegate
              */
-            rendering: function(cmd, cb) {
+            rendering: function(cmd, cb, delegate) {
+                if (delegate) cb = cb.bind(delegate);
                 if (arguments.callee.caller.arguments[0] === cmd) {
                     cb.apply(this, arguments.callee.caller.arguments[1]);
                 }
@@ -77,6 +92,16 @@ define(
 
 
         View.object = function(element, methods) {
+            var len = element.length || 0;
+
+            if(len > 0) {
+                element = element.get(0);
+            }
+
+
+
+            console.log("el:", element);
+
             var MyViewClass = View.$extend(methods);
             return new MyViewClass(element);
         };
@@ -84,9 +109,3 @@ define(
         return View;
     }
 );
-
-
-Function.prototype.define = function(prop, desc) {
-    Object.defineProperty(this.prototype, prop, desc);
-    return Object.__;
-};
