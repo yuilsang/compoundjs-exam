@@ -28,23 +28,36 @@ define(
         var ExampleRequestController = View.$extend(/** @lends ExampleRequestController.prototype */{
             $init: function() {
                 RequestExampleView.on("click", "._request", this.onclick.bind(this));
+                RequestExampleView.on("click", "._request_post", this.onclick.bind(this));
                 RequestExampleView.on("click", "._request_sync", this.onclick.bind(this));
             },
 
             // 클릭 이벤트 처리
             onclick: function(e) {
 
-                // request 버튼 클릭 처리
+                // get request 버튼 클릭 처리
                 this.responding("._request", function() {
                     Request
                         .$("ExampleController")
                         .method("GET")
                         .url("/example/api/request")
-                        .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
+                        .data({test:"11", authenticity_token: $('meta[name=csrf-token]').attr('content') })
                         .send(function(r) {
                             console.log(r);
 
                     });
+                }.bind(this));
+
+                // post request 버튼 클릭 처리
+                this.responding("._request_post", function() {
+                    Request
+                        .$("ExampleController")
+                        .method("POST")
+                        .url("/example/api/request_post")
+                        .data({test:"11", authenticity_token: $('meta[name=csrf-token]').attr('content') })
+                        .send(function(r) {
+                            console.log(r);
+                        });
                 }.bind(this));
 
                 // request sync 버튼 클릭 처리
