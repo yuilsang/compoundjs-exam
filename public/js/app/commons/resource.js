@@ -5,7 +5,7 @@
 define(
     [
         "module",
-        "app/common/view"
+        "app/commons/view"
     ],
     function (
         module,
