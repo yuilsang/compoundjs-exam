@@ -16,6 +16,7 @@ exports.routes = function (map) {
     // ================================
     map.get("/example/request", "example#request");
     map.get("/example/api/request", "example#api_request");
+    map.post("/example/api/request_post", "example#api_request_post");
 
     // ================================
     // UPLOAD 기능 테스트

@@ -20,6 +20,18 @@ action("api_request", function () {
     });
 });
 
+action("api_request_post", function () {
+    send({
+        code: 0,
+        resultvalue: {
+            query: req.query,
+            body: req.body
+        }
+    });
+});
+
+
+
 action("upload", function () {
     render({
         title: "example#upload"
