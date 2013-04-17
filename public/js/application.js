@@ -9,12 +9,12 @@ require.config({
 (function() {
     require(
         [
-            "app/commons/url"
-            ,"app/controllers/menu.controller"
+            "app/commons/url",
+            "app/controllers/menu.controller"
         ],
         function(
-            URL
-            ,MenuController
+            URL,
+            MenuController
             ) {
 
                 if (URL.routesName("controller") === "test") {
