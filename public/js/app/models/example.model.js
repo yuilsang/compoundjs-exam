@@ -30,7 +30,7 @@ define(
                     .url("/example/api/request")
                     .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
                     .send(function(data) {
-                        cb(data, self);
+                        cb(data);
                     });
             },
 
@@ -44,7 +44,7 @@ define(
                     .data(data)
                     .data({authenticity_token: $('meta[name=csrf-token]').attr('content') })
                     .send(function(data) {
-                        cb(data, self);
+                        cb(data);
                     });
             }
         });
