@@ -15,14 +15,9 @@ define(
         ) {
 
         /** @class */
-        var TestController = Class.$extend(/** @lends TestController.prototype */{
+        var TestController = View.$extend(/** @lends TestController.prototype */{
             $init: function() {
-
-                dqwdqwd
-                qwdqw
-                dqw
-                wd
-//                this.element($(".testcontroller"));
+                this.element($(".testcontroller"));
             },
             load: function() {
                 console.log("TestController.load");
