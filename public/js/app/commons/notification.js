@@ -2,7 +2,7 @@
  * @fileOverview jKit Notification Class 정의 파일
  * @version 2013.01.18
  */
-define("modules/kit/notification",
+define("app/commons/notification",
     function() {
         /** @class */
         var Notification = Class.$extend(/** @lends Notification.prototype */{
