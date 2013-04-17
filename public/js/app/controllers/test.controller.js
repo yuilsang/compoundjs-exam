@@ -13,25 +13,16 @@ define(
     function(
         View
         ) {
-//        var MyView = View.object($(".test"), {
-//            load: function() {
-//                console.log("MyView.load");
-//            },
-//            render: function() {
-//                console.log("MyView.render");
-//
-//                this.rendering("border", function() {
-//                    console.log("MyView.render--", this.$());
-//                    this.$().css("border", "2px solid blue");
-//                }.bind(this));
-//            }
-//        });
 
         /** @class */
-        var TestController = View.$extend(/** @lends TestController.prototype */{
+        var TestController = Class.$extend(/** @lends TestController.prototype */{
             $init: function() {
-                console.log("213132")
-                this.element($(".testcontroller"));
+
+                dqwdqwd
+                qwdqw
+                dqw
+                wd
+//                this.element($(".testcontroller"));
             },
             load: function() {
                 console.log("TestController.load");

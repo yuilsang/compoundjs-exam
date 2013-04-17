@@ -6,7 +6,7 @@ require.config({
     }
 });
 
-(function() {
+$(document).ready(function() {
     require(
         [
             "app/commons/url",
@@ -17,27 +17,31 @@ require.config({
             MenuController
             ) {
 
-                if (URL.routesName("controller") === "test") {
-                    require(["app/controllers/test.controller"], function(TestController) {
-                        new TestController();
-                    });
-                } else if (URL.routesName("controller") === "example" ) {
-                    new MenuController($("._menu").get(0));
-
-                    if (URL.action("request")) {
-                        require(["app/controllers/example.request.controller"], function(ExampleRequestController) {
-                            new ExampleRequestController();
-                        });
-                    }
-                    else if(URL.action("upload")) {
-                        require(["app/controllers/example.upload.controller"], function(ExampleUploadController) {
-                            new ExampleUploadController();
-                        });
-
-                    }
-                } else {
-                    new MenuController($("._menu").get(0));
-                }
+            require(["app/controllers/test.controller"], function(TestController) {
+                new TestController();
+            });
+//
+//                if (URL.routesName("controller") === "test") {
+//                    require(["app/controllers/test.controller"], function(TestController) {
+//                        new TestController();
+//                    });
+//                } else if (URL.routesName("controller") === "example" ) {
+//                    new MenuController($("._menu").get(0));
+//
+//                    if (URL.action("request")) {
+//                        require(["app/controllers/example.request.controller"], function(ExampleRequestController) {
+//                            new ExampleRequestController();
+//                        });
+//                    }
+//                    else if(URL.action("upload")) {
+//                        require(["app/controllers/example.upload.controller"], function(ExampleUploadController) {
+//                            new ExampleUploadController();
+//                        });
+//
+//                    }
+//                } else {
+//                    new MenuController($("._menu").get(0));
+//                }
         }
     );
-}).call(this);
+});
