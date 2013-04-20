@@ -4,18 +4,18 @@
  */
 define(
 
-    "app/commons/url",
+    "app/commons/url.util",
 
     function() {
 
         /** @class */
-        var URL = Class.$extend(/** @lends URL.prototype */{
+        var URLUtil = Class.$extend(/** @lends URLUtil.prototype */{
             $init: function() {
 
             }
         });
 
-        URL.routesName = function(name) {
+        URLUtil.routesName = function(name) {
             var paths = location.pathname.split("/");
             var controllerName = (paths[1] == "" ? "home" : paths[1]);
             var actionName = paths[2] || null;
@@ -26,7 +26,7 @@ define(
             }
         };
 
-        URL.controller = function(name) {
+        URLUtil.controller = function(name) {
             if(name) {
                 return (this.routesName("controller") === name ? true : false)
             } else {
@@ -34,7 +34,7 @@ define(
             }
         };
 
-        URL.action = function(name) {
+        URLUtil.action = function(name) {
             if(name) {
                 return (this.routesName("action") === name ? true : false)
             } else {
@@ -42,7 +42,7 @@ define(
             }
         };
 
-        return URL;
+        return URLUtil;
     }
 );
 

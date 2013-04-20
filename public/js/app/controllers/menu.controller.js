@@ -8,12 +8,12 @@ define(
 
     [
         "app/commons/view",
-        "app/commons/url"
+        "app/commons/url.util"
     ],
 
     function(
         View,
-        URL
+        URLUtil
         ) {
 
         /** @class */

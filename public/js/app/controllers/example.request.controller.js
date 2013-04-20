@@ -7,7 +7,7 @@ define(
     "app/controllers/example.request.controller",
 
     [
-        "app/commons/url",
+        "app/commons/url.util",
         "app/commons/flow",
         "app/commons/request",
         "app/commons/view",
@@ -16,7 +16,7 @@ define(
     ],
 
     function(
-        URL,
+        URLUtil,
         Flow,
         Request,
         View,

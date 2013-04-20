@@ -9,27 +9,27 @@ require.config({
 (function() {
     require(
         [
-            "app/commons/url"
+            "app/commons/url.util"
             ,"app/controllers/menu.controller"
         ],
         function(
-            URL
+            URLUtil
             ,MenuController
             ) {
 
-                if (URL.routesName("controller") === "test") {
+                if (URLUtil.routesName("controller") === "test") {
                     require(["app/controllers/test.controller"], function(TestController) {
                         new TestController();
                     });
-                } else if (URL.routesName("controller") === "example" ) {
+                } else if (URLUtil.routesName("controller") === "example" ) {
                     new MenuController($("._menu").get(0));
 
-                    if (URL.action("request")) {
+                    if (URLUtil.action("request")) {
                         require(["app/controllers/example.request.controller"], function(ExampleRequestController) {
                             new ExampleRequestController();
                         });
                     }
-                    else if(URL.action("upload")) {
+                    else if(URLUtil.action("upload")) {
                         require(["app/controllers/example.upload.controller"], function(ExampleUploadController) {
                             new ExampleUploadController();
                         });

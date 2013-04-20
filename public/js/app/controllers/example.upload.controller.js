@@ -7,7 +7,7 @@ define(
     "app/controllers/example.upload.controller",
 
     [
-        "app/commons/url",
+        "app/commons/url.util",
         "app/commons/flow",
         "app/commons/request",
         "app/commons/view",
@@ -19,7 +19,7 @@ define(
     ],
 
     function(
-        URL,
+        URLUtilUtil,
         Flow,
         Request,
         View,
