@@ -1,6 +1,7 @@
 /**
- * @fileOverview jKit Resource Class 정의 파일
+ * @fileOverview Resource Class
  * @version 2013.01.18
+ * @author yuilsang
  */
 define(
     [

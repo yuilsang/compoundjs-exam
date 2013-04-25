@@ -1,6 +1,7 @@
 /**
  * @fileOverview View Class 정의 파일
  * @version 2013.01.18
+ * @author yuilsang
  */
 define(
 

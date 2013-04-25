@@ -1,6 +1,7 @@
 /**
- * @fileOverview Request Class 정의 파일
+ * @fileOverview Request Class
  * @version 2013.01.18
+ * @author yuilsang
  */
 define(
 

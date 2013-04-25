@@ -1,6 +1,7 @@
 /**
- * @fileOverview Controller Class 정의 파일
+ * @fileOverview Controller Class
  * @version 2013.04.08
+ * @author yuilsang
  */
 define(
 

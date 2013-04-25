@@ -1,6 +1,7 @@
 /**
- * @fileOverview Model Class 정의 파일
+ * @fileOverview Model Class
  * @version 2013.04.11
+ * @author yuilsang
  */
 define(
 
