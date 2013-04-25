@@ -65,6 +65,10 @@ define(
                 this.$().on.apply(this.$(), arguments);
             },
 
+            trigger: function() {
+                this.$().on.apply(this.$(), arguments);
+            },
+
             /**
              *
              * @param selector
