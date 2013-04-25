@@ -66,7 +66,7 @@ define(
             },
 
             trigger: function() {
-                this.$().on.apply(this.$(), arguments);
+                this.$().trigger.apply(this.$(), arguments);
             },
 
             /**
